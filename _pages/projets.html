@@ -1,0 +1,132 @@
+---
+layout: null
+permalink: /projets/
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Projets | Theo Queval</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        :root { --main-yellow: #f1b82d; }
+        body, html { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: var(--main-yellow); color: white; }
+
+        /* NAVBAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            color: white;
+        }
+        .logo { font-size: 26px; font-weight: 900; text-transform: uppercase; color: white; text-decoration: none; }
+        .menu a { color: white; text-decoration: none; margin-left: 30px; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .menu a:hover { opacity: 0.7; }
+        
+        /* TITRE DE LA PAGE */
+        .header-title {
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 80px; font-weight: 900; text-transform: uppercase; margin: 0; letter-spacing: -3px; line-height: 0.9; }
+
+        /* GRILLE DE PROJETS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colonnes par ligne */
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 30px 100px 30px;
+        }
+
+        /* CARTE PROJET */
+        .project-card {
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .image-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 10; /* Format rectangle constant */
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 25px; /* Bords bien arrondis */
+            overflow: hidden;
+            border: 2px solid white;
+            margin-bottom: 15px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* L'image remplit le cadre sans se déformer */
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .image-wrapper img {
+            transform: scale(1.1);
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .project-category {
+            font-size: 14px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            h1 { font-size: 50px; }
+        }
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Theo Queval</a>
+        <div class="menu">
+            <a href="/">Accueil</a>
+            <a href="/a-propos/">À propos</a>
+            <a href="/projets/">Projets</a>
+            <a href="/cv/">CV</a>
+        </div>
+    </nav>
+
+    <div class="header-title">
+        <h1>Mes<br>Réalisations.</h1>
+    </div>
+
+    <div class="projects-grid">
+        {% for post in site.posts %}
+        <a href="{{ post.url }}" class="project-card">
+            <div class="image-wrapper">
+                <img src="{{ post.header.teaser | default: 'https://picsum.photos/600/400' }}" alt="{{ post.title }}">
+            </div>
+            <p class="project-category">{{ post.categories | first }}</p>
+            <h3 class="project-title">{{ post.title }}</h3>
+        </a>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

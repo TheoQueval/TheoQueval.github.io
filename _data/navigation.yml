@@ -1,0 +1,7 @@
+main:
+  - title: "Projets"
+    url: /projets/
+  - title: "À Propos"
+    url: /a-propos/
+  - title: "CV"
+    url: /cv/

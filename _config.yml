@@ -1,0 +1,27 @@
+title: "Theo Queval"
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "default" # Tu pourras changer en "air", "aqua", "contrast", etc.
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-gist
+
+include:
+  - _pages
+
+author:
+  name   : "Theo Queval"
+  avatar : "/assets/images/photo-profil.jpg" # Il faudra mettre une photo ici
+  bio    : "Développeur Fullstack | Passionné par Jekyll & Astro"
+  location: "Lens, France"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ton-pseudo"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/ton-pseudo"
