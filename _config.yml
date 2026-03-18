@@ -1,22 +1,26 @@
 title: "Theo Queval"
-remote_theme: "mmistakes/minimal-mistakes"
-minimal_mistakes_skin: "default" # Tu pourras changer en "air", "aqua", "contrast", etc.
+email: "theoqueval@yahoo.com"
+description: "Portfolio de Theo Queval - Développeur & Créateur de projets hardware."
 
-plugins:
-  - jekyll-remote-theme
-  - jekyll-include-cache
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-gist
+# Pour les images
+url: "https://theoqueval.github.io"
+baseurl: ""
 
-include:
-  - _pages
+# CONFIGURATION JEKYLL
+markdown: kramdown
+highlighter: rouge
+include: ["_pages", ".htaccess"]
+exclude: ["Gemfile", "Gemfile.lock", "node_modules", "vendor/"]
+
+collections:
+  posts:
+    output: true
+    permalink: /projets/:title/
 
 author:
   name   : "Theo Queval"
-  avatar : "/assets/images/photo-profil.jpg" # Il faudra mettre une photo ici
-  bio    : "Développeur Fullstack | Passionné par Jekyll & Astro"
+  avatar : "/assets/images/photo-profil.jpg"
+  bio    : "Développeur Fullstack | Passionné par l'embarqué et l'électronique"
   location: "Lens, France"
   links:
     - label: "GitHub"
@@ -25,3 +29,8 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/ton-pseudo"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed

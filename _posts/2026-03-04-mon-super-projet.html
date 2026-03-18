@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-03-18T20:25:58+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Theo Queval</title><subtitle>Portfolio de Theo Queval - Développeur &amp; Créateur de projets hardware.</subtitle><author><name>Theo Queval</name></author><entry><title type="html">WiFi RC Car Project</title><link href="http://localhost:4000/projets/voiture-rc/" rel="alternate" type="text/html" title="WiFi RC Car Project" /><published>2026-03-04T00:00:00+01:00</published><updated>2026-03-04T00:00:00+01:00</updated><id>http://localhost:4000/projets/mon-super-projet</id><content type="html" xml:base="http://localhost:4000/projets/voiture-rc/"><![CDATA[<!DOCTYPE html>
+---
+layout: null
+permalink: /projets/voiture-rc/
+title: "WiFi RC Car Project"
+header:
+  teaser: "/assets/images/rc4.jpg" 
+---
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -83,7 +90,7 @@
                 <p>Après avoir vidé la base commerciale, j'ai dû repenser l'espace. Découpe du châssis à la Dremel pour l'intégration des nouveaux composants et création de fenêtres d'aération pour optimiser le refroidissement du moteur brushed et de l'ESC.</p>
             </div>
             <div class="img-block">
-                <img src="/assets/images/rc5.jpg" alt="Chassis découpe">
+                <img src="{{ '/assets/images/rc5.jpg' | relative_url }}" alt="Chassis découpe">
             </div>
         </div>
 
@@ -93,7 +100,7 @@
                 <p>Conception du schéma sur KiCad. Le système repose sur un ESC 20A pour la puissance moteur et un servo 9G pour la direction. L'ensemble est alimenté par batterie avec une surveillance de tension en temps réel envoyée au pilote.</p>
             </div>
             <div class="img-block">
-                <img src="/assets/images/rc6.png" alt="Circuit KiCad">
+                <img src="{{ '/assets/images/rc6.png' | relative_url }}" alt="Circuit KiCad">
             </div>
         </div>
 
@@ -103,7 +110,7 @@
                 <p>Utilisation d'un ESP32 Devkit pour la logique de pilotage et d'un ESP32 S3 Sense dédié au flux vidéo basse latence. Le défi était de synchroniser les inputs du volant avec la réactivité de la voiture via le protocole UDP.</p>
             </div>
             <div class="img-block">
-                <img src="/assets/images/rc3.jpg" alt="Code embarqué">
+                <img src="{{ '/assets/images/rc3.jpg' | relative_url }}" alt="Code embarqué">
             </div>
         </div>
 
@@ -113,7 +120,7 @@
                 <p>Développement d'un logiciel PC permettant de récupérer le flux vidéo, d'afficher l'état de la batterie et de mapper les entrées d'un ensemble volant/pédalier gaming pour une immersion totale.</p>
             </div>
             <div class="img-block">
-                <img src="/assets/images/rc7.jpg" alt="Interface PC">
+                <img src="{{ '/assets/images/rc7.jpg' | relative_url }}" alt="Interface PC">
             </div>
         </div>
     </div>
@@ -140,4 +147,4 @@
         }
     </script>
 </body>
-</html>]]></content><author><name>Theo Queval</name></author><summary type="html"><![CDATA[Voiture RC WiFi | Theo Queval :root { --main-yellow: #f1b82d; } body, html { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: var(--main-yellow); color: white; scroll-behavior: smooth; }]]></summary></entry></feed>
+</html>
