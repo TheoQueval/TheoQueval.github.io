@@ -1,0 +1,156 @@
+---
+layout: null
+permalink: /projets/antenne-satellite/
+title: "Satellite Tracking Antenna"
+header:
+  teaser: "/assets/images/antenne_teaser.png"
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antenne Satellite | Theo Queval</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <style>
+        :root { --main-yellow: #f1b82d; }
+        body, html { margin: 0; padding: 0; font-family: 'Arial', sans-serif; background-color: var(--main-yellow); color: white; scroll-behavior: smooth; }
+
+        /* NAVBAR */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 30px; }
+        .logo { font-size: 26px; font-weight: 900; text-transform: uppercase; color: white; text-decoration: none; }
+        .menu a { color: white; text-decoration: none; margin-left: 30px; font-weight: bold; font-size: 14px; text-transform: uppercase; }
+
+        /* HERO SECTION */
+        .hero { padding: 60px 30px; max-width: 1100px; margin: 0 auto; text-align: center; }
+        .hero h1 { font-size: clamp(40px, 6vw, 90px); font-weight: 900; text-transform: uppercase; margin: 0; line-height: 0.9; letter-spacing: -4px; }
+        .hero p { font-size: 20px; margin-top: 20px; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .badge-wip { display: inline-block; background: #e74c3c; color: white; padding: 5px 15px; font-weight: bold; border-radius: 20px; font-size: 14px; margin-top: 15px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SYSTEME D'ONGLETS */
+        .tabs-container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
+        .tabs-header { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+        
+        .tab-btn { 
+            padding: 12px 25px; border: 2px solid white; background: transparent; color: white; 
+            cursor: pointer; font-weight: bold; text-transform: uppercase; border-radius: 50px; transition: 0.3s;
+        }
+        .tab-btn.active { background: white; color: var(--main-yellow); }
+        .tab-btn.wip-btn { border-style: dashed; opacity: 0.8; }
+        .tab-btn.wip-btn::after { content: " ⏳"; font-size: 12px; }
+
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* BLOCS DE CONTENU */
+        .text-block h2 { font-size: 40px; text-transform: uppercase; font-weight: 900; margin-bottom: 20px; line-height: 1; }
+        .text-block p { font-size: 18px; opacity: 0.9; line-height: 1.6; }
+        .img-block img { width: 100%; border-radius: 25px; border: 2px solid white; box-shadow: 10px 10px 0px rgba(0,0,0,0.1); }
+
+        /* VARIANTE GRISÉE POUR LE WIP */
+        .wip-content { opacity: 0.6; filter: grayscale(30%); }
+        .wip-status { background: rgba(0,0,0,0.2); border: 2px dashed rgba(255,255,255,0.5); padding: 20px; border-radius: 15px; margin-top: 20px; }
+        .wip-status h4 { margin: 0 0 5px 0; text-transform: uppercase; font-size: 16px; color: #fff; }
+
+        /* LIENS FINAUX */
+        .footer-links { text-align: center; padding: 100px 0; }
+        .btn-git { padding: 20px 40px; border: 2px solid white; color: white; text-decoration: none; border-radius: 50px; font-weight: 900; text-transform: uppercase; font-size: 20px; }
+        .btn-git:hover { background: white; color: var(--main-yellow); }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .tab-content.active { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="logo">Theo Queval</a>
+        <div class="menu">
+            <a href="/">Accueil</a>
+            <a href="/a-propos/">À propos</a>
+            <a href="/projets/">Projets</a>
+            <a href="{{ '/assets/pdf/CV_Theo_Queval.pdf' | relative_url }}" target="_blank" download="CV_Theo_Queval.pdf">CV</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>METEOR <br><span style="color: white;">SATELLITE TRACKER</span></h1>
+        <p>Conception d'une antenne Cross-Yagi motorisée azimut/élévation automatique pour la réception des images météo haute résolution des satellites défilants russes.</p>
+        <div class="badge-wip">Projet en cours de développement</div>
+    </div>
+
+    <div class="tabs-container">
+        <div class="tabs-header">
+            <button class="tab-btn active" onclick="openTab(event, 'antenne')">L'Antenne (Simu RF)</button>
+            <button class="tab-btn wip-btn" onclick="openTab(event, 'motorisation')">Support Motorisé</button>
+            <button class="tab-btn wip-btn" onclick="openTab(event, 'reception')">Réception & SDR</button>
+        </div>
+
+        <div id="antenne" class="tab-content active">
+            <div class="text-block">
+                <h2>Modélisation de l'antenne</h2>
+                <p>La première phase du projet a consisté à modéliser l'antenne sur le logiciel <b>4nec2</b>. Ce qui permet d'ajuster les longueurs et l'espacement des éléments pour obtenir un lobe de rayonnement optimal et une impédance adaptée à la fréquence de transmission orbitale.</p>
+                <p>Les résultats de ces simulations valideront les dimensions géométriques requises pour la phase ultérieure de prototypage et d'assemblage mécanique.</p>
+            </div>
+            <div class="img-block">
+                <img src="{{ '/assets/images/antenne_simu.png' | relative_url }}" alt="Simulation 4nec2 Cross-Yagi">
+            </div>
+        </div>
+
+        <div id="motorisation" class="tab-content wip-content">
+            <div class="text-block">
+                <h2>Rotor Azimut & Élévation</h2>
+                <p>Étape de modélisation mécanique à venir. Pour suivre précisément la trajectoire du satellite calculée via les données TLE (Two-Line Elements), l'antenne sera montée sur un système à deux axes (Azimut et Élévation).</p>
+                <div class="wip-status">
+                    <h4><i class="fas fa-tools"></i> Statut actuel : Planification</h4>
+                    <p style="margin:0; font-size:15px; opacity:0.8;">Choix de la motorisation (servomoteurs puissants ou moteurs pas à pas avec réducteurs) et étude du contrôleur (Arduino/ESP32 interfacé avec Gpredict).</p>
+                </div>
+            </div>
+            <div class="img-block">
+                <img src="https://picsum.photos/800/600?random=11" alt="Concept mécanique à venir">
+            </div>
+        </div>
+
+        <div id="reception" class="tab-content wip-content">
+            <div class="text-block">
+                <h2>Chaîne SDR & Décodage</h2>
+                <p>Le signal radio brut capté sera injecté dans un RTL-SDR. Le flux numérique subira ensuite une démodulation pour extraire les paquets de données du protocole LRPT (Low Resolution Picture Transmission) des satellites Meteor russes.</p>
+                <div class="wip-status">
+                    <h4><i class="fas fa-code"></i> Statut actuel : Recherche logicielle</h4>
+                    <p style="margin:0; font-size:15px; opacity:0.8;">Tests prévus avec SDR#, Meteor Demodulator et l'outil de traitement d'images pour reconstituer la couverture nuageuse en haute définition.</p>
+                </div>
+            </div>
+            <div class="img-block">
+                <img src="https://picsum.photos/800/600?random=12" alt="Concept décodage SDR">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-links">
+        <a href="https://github.com/ton-lien" class="btn-git"><i class="fab fa-github"></i> Suivre sur GitHub</a>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "grid";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
